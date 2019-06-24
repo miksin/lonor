@@ -1,6 +1,9 @@
 package jp.co.calace.lonor.models;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class Character {
 
@@ -8,14 +11,32 @@ public class Character {
     private String name;
     private Date birthday;
     private int avatar;
-    private int favor;
+    private ReplyEngine replyEngine;
+    public static final DateFormat iso8601Format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    public Character(int id, String name, int avatar, Date birthday, int favor) {
+    public Character(int id, String name, int avatar, Date birthday, ReplyEngine replyEngine) {
         this.id = id;
         this.name = name;
         this.avatar = avatar;
         this.birthday = birthday;
-        this.favor = favor;
+        this.replyEngine = replyEngine;
+    }
+
+    public Character(int id, String name, int avatar, String birthday, ReplyEngine replyEngine) {
+        this.id = id;
+        this.name = name;
+        this.avatar = avatar;
+        try {
+            this.birthday = iso8601Format.parse(birthday);
+        } catch (Exception ignore) {
+            this.birthday = new Date();
+        }
+        this.replyEngine = replyEngine;
+    }
+
+    public List<String> reply(List<String> refMsgList) {
+        List<String> replyList = replyEngine.reply(refMsgList, this);
+        return replyList;
     }
 
     public int getId() {
@@ -50,11 +71,15 @@ public class Character {
         return birthday;
     }
 
-    public void setFavor(int favor) {
-        this.favor = favor;
+    public int getOld() {
+        return new Date().getYear() - birthday.getYear();
     }
 
-    public int getFavor() {
-        return favor;
+    public ReplyEngine getReplyEngine() {
+        return replyEngine;
+    }
+
+    public void setReplyEngine(ReplyEngine replyEngine) {
+        this.replyEngine = replyEngine;
     }
 }

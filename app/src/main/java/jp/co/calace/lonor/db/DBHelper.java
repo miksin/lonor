@@ -8,7 +8,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private final static String DATABASE_NAME = "lonor.db";
     private final static int DATABASE_VERSION = 1;
 
-    private final String MSG_TABLE = "messages";
+    public final static String MSG_TABLE = "messages";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -30,8 +30,8 @@ public class DBHelper extends SQLiteOpenHelper {
     private void createMsgTable(SQLiteDatabase sqLiteDatabase) {
         StringBuilder createMsgTableSQL = new StringBuilder();
         createMsgTableSQL.append("create table " + MSG_TABLE + " (");
-        createMsgTableSQL.append("id int PRIMARY KEY AUTOINCREMENT,");
-        createMsgTableSQL.append("sender_id int,");
+        createMsgTableSQL.append("id INTEGER PRIMARY KEY AUTOINCREMENT,");
+        createMsgTableSQL.append("sender_id INTEGER,");
         createMsgTableSQL.append("text char(50),");
         createMsgTableSQL.append("time datetime);");
 

@@ -14,6 +14,13 @@ public class Message {
     private Date time;
     private int type;
 
+    public Message() {
+        this.sender = null;
+        this.text = "";
+        this.time = null;
+        this.type = TYPE_SEND;
+    }
+
     public Message(Character sender, String text, Date time, int type) {
         this.sender = sender;
         this.text = text;
