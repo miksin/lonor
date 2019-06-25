@@ -2,8 +2,12 @@ package jp.co.calace.lonor.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class BadBoyReplyEngine extends ReplyEngine {
+
+    private final Pattern equationPattern = Pattern.compile("^(\\d+)\\s*([+\\-*/])\\s*(\\d+)$");
 
     public BadBoyReplyEngine() {
         super(new ArrayList<ConversationSet>());
@@ -35,6 +39,8 @@ public class BadBoyReplyEngine extends ReplyEngine {
                 new String[]{"は？俺様の母かよ", "天上天下唯我独尊だ！"});
         this.addConversationSet(new String[]{"fuck"},
                 new String[]{"は？！てぇめ！殺すぞ！"});
+        this.addConversationSet(new String[]{"はは", "haha", "ふふ", "ハハ"},
+                new String[]{"何がおかしい！殺すぞ！", "笑うな！死にたい？"});
     }
 
     @Override
@@ -55,6 +61,12 @@ public class BadBoyReplyEngine extends ReplyEngine {
             if (refMsg.toLowerCase().contains("何歳")) {
                 resultList.add("貴様に関係ねぇよ！");
                 resultList.add("ちっ、" + character.getOld() + "だ");
+            }
+
+            Matcher eqMatcher = equationPattern.matcher(refMsg.toLowerCase());
+            while (eqMatcher.find()) {
+                resultList.add("なめんなよ！これくらいできるさ");
+                resultList.add("答えは　" + this.random.nextInt(30) + " だろ？");
             }
         }
 

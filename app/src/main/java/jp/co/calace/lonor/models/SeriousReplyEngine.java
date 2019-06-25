@@ -39,6 +39,8 @@ public class SeriousReplyEngine extends ReplyEngine {
                 new String[]{"今、大学生ですよ"});
         this.addConversationSet(new String[]{"fuck"},
                 new String[]{"そんなこと言わないでください"});
+        this.addConversationSet(new String[]{"はは", "haha", "ふふ", "ハハ"},
+                new String[]{"何が面白いことあった？", "楽しいそうね"});
     }
 
     @Override

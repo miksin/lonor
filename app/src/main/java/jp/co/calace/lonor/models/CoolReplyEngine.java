@@ -19,10 +19,10 @@ public class CoolReplyEngine extends ReplyEngine {
                 new String[]{"猫…す…嫌い"});
         this.addConversationSet(new String[]{"テレビ", "番組", "ドラマ", "TV", "drama"},
                 new String[]{"そういうのあまり好きじゃない"});
-        this.addConversationSet(new String[]{"アニメ", "漫画", "anime", "マンガ", "コミック"},
+        this.addConversationSet(new String[]{"アニメ", "漫画", "anime", "マンガ", "コミック", "animation"},
                 new String[]{"そういうのあまり好きじゃない"});
         this.addConversationSet(new String[]{"音楽", "music"},
-                new String[]{"ま、ロックなら...", "音楽を聴くのに頭なんて必要ないのさ"});
+                new String[]{"ま、ロックなら...", "考えるな、感じろ"});
         this.addConversationSet(new String[]{"movie", "映画"},
                 new String[]{"そういうのあまり好きじゃない"});
         this.addConversationSet(new String[]{"game", "ゲーム"},
@@ -31,6 +31,7 @@ public class CoolReplyEngine extends ReplyEngine {
                 new String[]{"ま、いいけど"});
         this.addConversationSet(new String[]{"職業", "仕事", "job", "career"},
                 new String[]{"自分自身を信じてみるだけでいい", "きっと、生きる道が見えてくる", "人生の目標を教えてくれるのは直感だけ"});
+
     }
 
     @Override

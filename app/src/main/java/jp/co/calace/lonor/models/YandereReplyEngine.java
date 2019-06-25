@@ -31,6 +31,8 @@ public class YandereReplyEngine extends ReplyEngine {
                 new String[]{"！誘ってる？行く行く！今行く"});
         this.addConversationSet(new String[]{"職業", "仕事", "job", "career"},
                 new String[]{"...ニート", "一応、高校生"});
+        this.addConversationSet(new String[]{"はは", "haha", "ふふ", "ハハ"},
+                new String[]{"ふふ"});
     }
 
     @Override
