@@ -35,8 +35,10 @@ public class SeriousReplyEngine extends ReplyEngine {
                 new String[]{"P&Dをやっていますよ"});
         this.addConversationSet(new String[]{"date", "デート"},
                 new String[]{"デート？次行こうね"});
-        this.addConversationSet(new String[]{"職業", "仕事"},
-                new String[]{"今は大学生ですよ"});
+        this.addConversationSet(new String[]{"職業", "仕事", "job", "career"},
+                new String[]{"今、大学生ですよ"});
+        this.addConversationSet(new String[]{"fuck"},
+                new String[]{"そんなこと言わないでください"});
     }
 
     @Override

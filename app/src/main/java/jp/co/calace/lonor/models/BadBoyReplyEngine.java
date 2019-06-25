@@ -31,8 +31,10 @@ public class BadBoyReplyEngine extends ReplyEngine {
                 new String[]{"ゲーセン行こうぜ！"});
         this.addConversationSet(new String[]{"date", "デート"},
                 new String[]{"誰かてみぇと一緒かよ"});
-        this.addConversationSet(new String[]{"職業", "仕事"},
+        this.addConversationSet(new String[]{"職業", "仕事", "job", "career"},
                 new String[]{"は？俺様の母かよ", "天上天下唯我独尊だ！"});
+        this.addConversationSet(new String[]{"fuck"},
+                new String[]{"は？！てぇめ！殺すぞ！"});
     }
 
     @Override

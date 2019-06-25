@@ -29,7 +29,7 @@ public class YandereReplyEngine extends ReplyEngine {
                 new String[]{"それは…言いたくない"});
         this.addConversationSet(new String[]{"date", "デート"},
                 new String[]{"！誘ってる？行く行く！今行く"});
-        this.addConversationSet(new String[]{"職業", "仕事"},
+        this.addConversationSet(new String[]{"職業", "仕事", "job", "career"},
                 new String[]{"...ニート", "一応、高校生"});
     }
 
@@ -67,6 +67,12 @@ public class YandereReplyEngine extends ReplyEngine {
                 resultList.add("アサシンクリード");
                 resultList.add("ペルソナなどもやっている");
                 resultList.add("パソコンはもち…あ…何でもない、忘れて");
+            }
+
+            if (refMsg.toLowerCase().contains("fuck")) {
+                resultList.add("...");
+                resultList.add("...");
+                resultList.add("いいよ");
             }
         }
 
