@@ -31,6 +31,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import jp.co.calace.lonor.dao.MessageDao;
 import jp.co.calace.lonor.db.DBHelper;
@@ -51,6 +54,7 @@ public class MainActivity extends AppCompatActivity
     private RecyclerView chatRoomContent;
     private Character self;
     private List<Character> friends;
+    private List<ExecutorService> executors;
     private DBHelper dbHelper;
     private MessageDao messageDao;
     private List<Message> msgList;
@@ -75,6 +79,10 @@ public class MainActivity extends AppCompatActivity
         // Initial characters
         self = initialSelfCharacter();
         friends = initialFriends();
+        executors = new ArrayList<>();
+        for (int i = 0; i < friends.size(); i ++) {
+            executors.add(Executors.newSingleThreadExecutor());
+        }
 
         // Initial DB
         dbHelper = new DBHelper(this);
@@ -109,9 +117,10 @@ public class MainActivity extends AppCompatActivity
                 for (int i = 0; i < friends.size(); i++) {
                     Character friend = friends.get(i);
                     List<String> replyList = friend.reply(refMsgList);
+                    //ExecutorService executor = Executors.newSingleThreadExecutor();
                     for (String reply : replyList) {
                         new ReplyTask(msgList, msgAdapter).executeOnExecutor(
-                                AsyncTask.THREAD_POOL_EXECUTOR, new Message(friend, reply, new Date(), Message.TYPE_RECV));
+                                executors.get(i), new Message(friend, reply, new Date(), Message.TYPE_RECV));
                     }
                 }
 
@@ -234,7 +243,7 @@ public class MainActivity extends AppCompatActivity
         @Override
         protected Message doInBackground(Message... msgs) {
             try {
-                Thread.sleep(random.nextInt(3000) + 1000);
+                Thread.sleep(random.nextInt(1000) + msgs[0].getText().length() * 200);
                 msgs[0].setTime(new Date());
                 return msgs[0];
             } catch (Exception ignore) {};

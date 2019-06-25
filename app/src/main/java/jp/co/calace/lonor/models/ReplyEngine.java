@@ -9,7 +9,8 @@ import java.util.Random;
 
 public class ReplyEngine {
 
-    List<ConversationSet> conversationSets;
+    private List<ConversationSet> conversationSets;
+    public static Random random = new Random();
 
     public ReplyEngine() {
         conversationSets = new ArrayList<>();
@@ -32,6 +33,10 @@ public class ReplyEngine {
 
     public void addConversationSet(String[] identifiers, String[] replies) {
         conversationSets.add(new ConversationSet(identifiers, replies));
+    }
+
+    public String defaultReply() {
+        return "なに？";
     }
 
     public List<String> reply(List<String> refMsgList, Character character) {
